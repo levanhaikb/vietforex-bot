@@ -1,0 +1,72 @@
+Step 1: Clone Repository
+bashsu - forex-bot
+git clone https://github.com/levanhaikb/vietforex-bot.git
+cd vietforex-bot
+Step 2: Environment Configuration
+bash# Copy environment template
+cp configs/.env.example .env
+
+# Edit configuration
+nano .env
+# Fill in your API keys, database passwords, etc.
+Step 3: Deploy Services
+bash# Run deployment script
+chmod +x scripts/deploy.sh
+./scripts/deploy.sh
+✅ Verification
+Health Checks
+bash# Check all services
+./scripts/test-connection.sh
+
+# API server
+curl http://localhost:3000/health
+
+# Database
+psql -h localhost -U forex_bot -d vietforex_production -c "SELECT version();"
+
+# Redis
+redis-cli ping
+🔧 Troubleshooting
+See docs/TROUBLESHOOTING.md for common issues and solutions.
+📞 Support
+For setup issues, check the GitHub repository issues section.
+
+### **4. .gitignore** (Root level)
+Dependencies
+node_modules/
+npm-debug.log*
+Environment files
+.env
+.env.local
+.env.production
+Logs
+logs/
+*.log
+Database
+*.db
+*.sqlite
+IDE
+.vscode/
+.idea/
+OS
+.DS_Store
+Thumbs.db
+Temporary files
+tmp/
+temp/
+Build outputs
+dist/
+build/
+API keys and secrets
+secrets/
+keys/
+Colab checkpoints
+.ipynb_checkpoints/
+Python
+pycache/
+*.pyc
+*.pyo
+Model files (large)
+*.pkl
+*.h5
+*.model
