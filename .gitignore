@@ -70,3 +70,29 @@ Model files (large)
 *.pkl
 *.h5
 *.model
+# Thêm vào .gitignore hiện tại
+cat >> .gitignore << 'EOF'
+
+# VietForex Infrastructure specific
+# Environment files with sensitive data
+infrastructure/configs/.env.ionos
+infrastructure/ionos-setup/ionos-vps-info.json
+
+# Backup files
+*backup*
+vietforex-backups/
+
+# Temporary files
+test_file
+test_write_file
+test_random_file
+
+# Server specific logs
+infrastructure/validation-results/*.txt
+infrastructure/validation-results/performance-logs/*.log
+
+# SSH keys
+*.pem
+*.key
+authorized_keys
+EOF
