@@ -54,7 +54,664 @@
 - **Developer-friendly**: Standard REST API cho easy integration
 
 ---
+# 🛠️ HƯỚNG DẪN TÍCH HỢP VPS IONOS VÀO PROJECT-PLAN
 
+## 🎯 VỊ TRÍ THÊM VÀO PROJECT-PLAN.MD
+
+**Thêm ngay sau dòng 77 (sau phần "CẢI TIẾN QUAN TRỌNG") và trước "GIAI ĐOẠN -1":**
+
+---
+
+## 🛠️ GIAI ĐOẠN 0.5: VPS IONOS INFRASTRUCTURE (MỚI THÊM)
+### Ngày -8 đến -2: Professional VPS Setup Foundation (7 ngày)
+
+**Mục tiêu**: Tạo nền tảng VPS chuyên nghiệp, bảo mật và tối ưu hiệu suất cho VietForex Bot
+
+---
+
+#### Ngày -8: IONOS VPS Registration & Initial Setup (2-3 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**IONOS Account & VPS Provisioning:**
+- Truy cập https://www.ionos.com và đăng ký tài khoản
+- Chọn **VPS S Package**: 2GB RAM, 1 vCore, 40GB SSD (€4/tháng)
+- **Data Center**: Frankfurt, Germany (tối ưu cho ping VN)
+- **OS**: Ubuntu 22.04 LTS
+- **Hostname**: `vietforex-production`
+- Tạo **root password mạnh** và ghi nhớ
+
+**Why IONOS?**
+- **Cost-effective**: €4/tháng (~100k VND) rẻ nhất thị trường
+- **EU Infrastructure**: GDPR compliant, stable network
+- **German Engineering**: 99.9% uptime guarantee
+- **DDoS Protection**: Free included
+- **24/7 Support**: Professional technical support
+
+**Timeline**: 15-30 phút đăng ký, 5-15 phút provisioning
+
+---
+
+#### Ngày -7: SSH Security & User Management (3-4 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**Initial SSH Connection:**
+```bash
+# Từ terminal/cmd local
+ssh root@YOUR_VPS_IP
+# Nhập root password
+```
+
+**System Updates & Essential Tools:**
+```bash
+# System updates
+apt update && apt upgrade -y
+
+# Essential packages
+apt install -y curl wget git vim htop unzip software-properties-common
+
+# Set Vietnam timezone
+timedatectl set-timezone Asia/Ho_Chi_Minh
+```
+
+**SSH Key Authentication Setup:**
+1. **Trên máy local** tạo SSH key pair:
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "vietforex@ionos.vps"
+   ```
+
+2. **Copy public key lên VPS:**
+   ```bash
+   # Trên VPS
+   mkdir -p ~/.ssh
+   chmod 700 ~/.ssh
+   
+   # Paste nội dung file ~/.ssh/id_rsa.pub từ local
+   nano ~/.ssh/authorized_keys
+   chmod 600 ~/.ssh/authorized_keys
+   ```
+
+**Create Secure User Account:**
+```bash
+# Tạo user forex-bot
+adduser forex-bot
+# Password: Tạo password mạnh
+
+# Add to sudo group
+usermod -aG sudo forex-bot
+
+# Setup SSH key cho user mới
+mkdir -p /home/forex-bot/.ssh
+cp ~/.ssh/authorized_keys /home/forex-bot/.ssh/
+chown -R forex-bot:forex-bot /home/forex-bot/.ssh
+chmod 600 /home/forex-bot/.ssh/authorized_keys
+```
+
+**Test New User SSH:**
+```bash
+# Từ terminal mới
+ssh forex-bot@YOUR_VPS_IP
+# Phải login được không cần password
+```
+
+---
+
+#### Ngày -6: Security Hardening & Firewall (2-3 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**SSH Hardening:**
+```bash
+# Backup SSH config
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
+
+# Edit SSH configuration
+nano /etc/ssh/sshd_config
+```
+
+**Key SSH Security Changes:**
+- `Port 2222` (thay đổi từ 22)
+- `PermitRootLogin no`
+- `PasswordAuthentication no`
+- `PubkeyAuthentication yes`
+- `MaxAuthTries 3`
+
+**UFW Firewall Setup:**
+```bash
+# Install và configure UFW
+apt install -y ufw
+
+# Default policies
+ufw default deny incoming
+ufw default allow outgoing
+
+# Allow essential ports
+ufw allow 2222/tcp comment 'SSH Access'
+ufw allow 80/tcp comment 'HTTP'
+ufw allow 443/tcp comment 'HTTPS'
+ufw allow 3000/tcp comment 'Node.js App'
+
+# Enable firewall
+ufw enable
+```
+
+**Fail2Ban Installation:**
+```bash
+# Install Fail2Ban
+apt install -y fail2ban
+
+# Configure for SSH protection
+cat > /etc/fail2ban/jail.local << 'EOF'
+[DEFAULT]
+bantime = 3600
+findtime = 600
+maxretry = 3
+
+[sshd]
+enabled = true
+port = 2222
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+EOF
+
+# Start Fail2Ban
+systemctl start fail2ban
+systemctl enable fail2ban
+```
+
+**Security Validation:**
+- Test SSH với port 2222: `ssh -p 2222 forex-bot@YOUR_IP`
+- Verify firewall: `ufw status verbose`
+- Check Fail2Ban: `fail2ban-client status`
+
+---
+
+#### Ngày -5: Software Stack Installation (3-4 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**Docker & Docker Compose:**
+```bash
+# Switch to forex-bot user
+su - forex-bot
+
+# Install Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# Add user to docker group
+sudo usermod -aG docker forex-bot
+
+# Install Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# Test Docker
+docker --version
+docker run hello-world
+```
+
+**Node.js 20+ Installation:**
+```bash
+# Add NodeSource repository
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+
+# Install Node.js
+sudo apt-get install -y nodejs
+
+# Install global packages
+sudo npm install -g pm2 nodemon yarn
+
+# Verify installations
+node --version  # v20.x.x
+npm --version
+pm2 --version
+```
+
+**PostgreSQL Database:**
+```bash
+# Install PostgreSQL
+sudo apt install -y postgresql postgresql-contrib
+
+# Start services
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+
+# Create database and user
+sudo -u postgres psql << EOF
+CREATE DATABASE vietforex_production;
+CREATE USER forex_bot WITH ENCRYPTED PASSWORD 'VietForexIONOS2024!';
+GRANT ALL PRIVILEGES ON DATABASE vietforex_production TO forex_bot;
+ALTER USER forex_bot CREATEDB;
+\q
+EOF
+```
+
+**Redis Cache:**
+```bash
+# Install Redis
+sudo apt install -y redis-server
+
+# Configure Redis
+sudo sed -i 's/^# requirepass foobared/requirepass VietForexRedisIONOS2024/' /etc/redis/redis.conf
+
+# Restart Redis
+sudo systemctl restart redis-server
+sudo systemctl enable redis-server
+
+# Test Redis
+redis-cli -a VietForexRedisIONOS2024 ping
+```
+
+---
+
+#### Ngày -4: Project Structure & Environment (2-3 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**VietForex Project Directory:**
+```bash
+# Create main project structure
+mkdir -p ~/vietforex-bot-project
+
+cd ~/vietforex-bot-project
+
+# Create folder structure theo kế hoạch
+mkdir -p {
+  cau-hinh-chinh,
+  mau-template,
+  du-lieu-tho,
+  du-lieu-xu-ly,
+  mo-hinh,
+  tin-hieu,
+  kiem-chung,
+  san-xuat,
+  doanh-nghiep,
+  phan-tich,
+  quoc-te,
+  doi-moi,
+  mo-rong
+}
+
+# Production subfolder structure
+mkdir -p san-xuat/{trien-khai,bao-mat,bao-tri,giam-sat}
+mkdir -p san-xuat/trien-khai/{cau-hinh-vps,telegram-bot,co-so-du-lieu}
+mkdir -p san-xuat/bao-mat/{chung-chi,firewall,audit}
+mkdir -p san-xuat/bao-tri/{backup,logs,monitoring}
+mkdir -p san-xuat/giam-sat/{metrics,alerts,dashboards}
+```
+
+**Environment Configuration:**
+```bash
+# VPS Information file
+cat > ~/vietforex-bot-project/san-xuat/trien-khai/cau-hinh-vps/ionos-vps-info.json << EOF
+{
+  "vps_provider": "IONOS",
+  "setup_date": "$(date)",
+  "server_info": {
+    "hostname": "$(hostname)",
+    "ip_address": "$(curl -s ifconfig.me)",
+    "os": "$(lsb_release -d | cut -f2)",
+    "timezone": "$(timedatectl | grep 'Time zone' | awk '{print $3}')",
+    "datacenter": "Frankfurt, Germany"
+  },
+  "specifications": {
+    "ram": "2GB",
+    "cpu": "1 vCore", 
+    "storage": "40GB SSD",
+    "bandwidth": "Unlimited"
+  }
+}
+EOF
+
+# Environment template
+cat > ~/vietforex-bot-project/san-xuat/trien-khai/cau-hinh-vps/.env.ionos << 'EOF'
+# VietForex IONOS Production Environment
+NODE_ENV=production
+PORT=3000
+
+# Server Info
+SERVER_PROVIDER=IONOS
+SERVER_LOCATION=Frankfurt
+SERVER_IP=$(curl -s ifconfig.me)
+
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=vietforex_production
+DB_USER=forex_bot
+DB_PASSWORD=VietForexIONOS2024!
+
+# Redis Configuration
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=VietForexRedisIONOS2024
+EOF
+
+chmod 600 ~/vietforex-bot-project/san-xuat/trien-khai/cau-hinh-vps/.env.ionos
+```
+
+---
+
+#### Ngày -3: Monitoring & Backup Systems (2-3 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**System Monitoring Setup:**
+```bash
+# System monitoring script
+cat > ~/vietforex-bot-project/san-xuat/giam-sat/system-monitor.sh << 'EOF'
+#!/bin/bash
+# VietForex System Monitoring
+
+echo "🔍 VIETFOREX SYSTEM STATUS - $(date)"
+echo "=================================="
+
+# Resource usage
+echo "💾 MEMORY: $(free -h | grep Mem | awk '{print $3"/"$2}')"
+echo "💽 DISK: $(df -h / | awk 'NR==2{print $3"/"$2" ("$5")"}')"
+echo "⚡ CPU: $(cat /proc/loadavg | awk '{print $1}')"
+
+# Service status
+services=("docker" "postgresql" "redis-server" "fail2ban")
+for service in "${services[@]}"; do
+    if systemctl is-active --quiet $service; then
+        echo "✓ $service: RUNNING"
+    else
+        echo "✗ $service: STOPPED"
+    fi
+done
+
+# Network connectivity
+echo "🌐 NETWORK: $(ping -c 1 8.8.8.8 > /dev/null && echo "OK" || echo "FAILED")"
+EOF
+
+chmod +x ~/vietforex-bot-project/san-xuat/giam-sat/system-monitor.sh
+```
+
+**Automated Backup System:**
+```bash
+# Backup script
+cat > ~/vietforex-bot-project/san-xuat/bao-tri/backup.sh << 'EOF'
+#!/bin/bash
+# VietForex Backup System
+
+BACKUP_DIR="$HOME/vietforex-backups"
+DATE=$(date +%Y%m%d_%H%M%S)
+
+mkdir -p $BACKUP_DIR
+
+# Database backup
+PGPASSWORD='VietForexIONOS2024!' pg_dump -h localhost -U forex_bot vietforex_production > $BACKUP_DIR/db_backup_$DATE.sql
+
+# Project files backup
+tar -czf $BACKUP_DIR/project_backup_$DATE.tar.gz ~/vietforex-bot-project/
+
+# Keep only last 7 backups
+find $BACKUP_DIR -name "*.sql" -mtime +7 -delete
+find $BACKUP_DIR -name "*.tar.gz" -mtime +7 -delete
+
+echo "✅ Backup completed: $DATE"
+EOF
+
+chmod +x ~/vietforex-bot-project/san-xuat/bao-tri/backup.sh
+
+# Setup daily backup cron
+(crontab -l 2>/dev/null; echo "0 2 * * * /home/forex-bot/vietforex-bot-project/san-xuat/bao-tri/backup.sh") | crontab -
+```
+
+---
+
+#### Ngày -2: System Validation & Performance Testing (2-3 giờ)
+
+**👨‍💼 Infrastructure Lead:**
+
+**Comprehensive System Validation:**
+```bash
+# System validation script
+cat > ~/vietforex-bot-project/san-xuat/kiem-chung/ionos-validation.sh << 'EOF'
+#!/bin/bash
+# IONOS VPS Comprehensive Validation
+
+echo "🔍 IONOS VPS VALIDATION - VIETFOREX PROJECT"
+echo "=========================================="
+echo "Date: $(date)"
+echo "Server: $(hostname) ($(curl -s ifconfig.me))"
+echo ""
+
+# System Information
+echo "✅ SYSTEM INFORMATION:"
+echo "   OS: $(lsb_release -d | cut -f2)"
+echo "   Kernel: $(uname -r)"  
+echo "   Uptime: $(uptime -p)"
+echo "   User: $USER"
+echo ""
+
+# Resource Usage
+echo "💾 RESOURCE USAGE:"
+echo "   Memory: $(free -h | grep Mem | awk '{print $3"/"$2}')"
+echo "   Disk: $(df -h / | awk 'NR==2{print $3"/"$2" ("$5")"}')"
+echo "   CPU Load: $(cat /proc/loadavg | awk '{print $1}')"
+echo ""
+
+# Service Status Validation
+echo "🔧 SERVICE STATUS:"
+services=("docker" "postgresql" "redis-server" "fail2ban" "ssh")
+for service in "${services[@]}"; do
+    if systemctl is-active --quiet $service; then
+        echo "   ✓ $service: RUNNING"
+    else
+        echo "   ✗ $service: STOPPED"
+    fi
+done
+echo ""
+
+# Security Validation
+echo "🔒 SECURITY STATUS:"
+if ufw status | grep -q "Status: active"; then
+    echo "   ✓ UFW Firewall: ACTIVE"
+    echo "   Rules: $(ufw status numbered | grep -c ']')"
+else
+    echo "   ✗ UFW Firewall: INACTIVE"
+fi
+
+if fail2ban-client status > /dev/null 2>&1; then
+    echo "   ✓ Fail2Ban: ACTIVE"
+else  
+    echo "   ✗ Fail2Ban: INACTIVE"
+fi
+
+# Port Status Check
+echo ""
+echo "🌐 PORT STATUS:"
+ports=("2222" "5432" "6379" "80" "443" "3000")
+for port in "${ports[@]}"; do
+    if netstat -tln | grep -q ":$port "; then
+        echo "   ✓ Port $port: LISTENING"
+    else
+        echo "   ⚠ Port $port: NOT LISTENING"
+    fi
+done
+
+# Software Versions
+echo ""
+echo "📦 SOFTWARE VERSIONS:"
+echo "   Docker: $(docker --version | awk '{print $3}' | sed 's/,//')"
+echo "   Node.js: $(node --version)"
+echo "   PostgreSQL: $(psql --version | awk '{print $3}')"
+echo "   Redis: $(redis-server --version | awk '{print $3}' | cut -d'=' -f2)"
+
+# Database Connection Tests
+echo ""
+echo "🗄️ DATABASE TESTS:"
+if PGPASSWORD='VietForexIONOS2024!' psql -h localhost -U forex_bot -d vietforex_production -c '\l' > /dev/null 2>&1; then
+    echo "   ✓ PostgreSQL: CONNECTION OK"
+else
+    echo "   ✗ PostgreSQL: CONNECTION FAILED"
+fi
+
+if redis-cli -a VietForexRedisIONOS2024 ping 2>/dev/null | grep -q "PONG"; then
+    echo "   ✓ Redis: CONNECTION OK"  
+else
+    echo "   ✗ Redis: CONNECTION FAILED"
+fi
+
+# Project Structure Validation
+echo ""
+echo "📁 PROJECT STRUCTURE:"
+if [ -d ~/vietforex-bot-project ]; then
+    echo "   ✓ Main project folder: EXISTS"
+    echo "   Subfolders: $(find ~/vietforex-bot-project -maxdepth 1 -type d | wc -l)"
+else
+    echo "   ✗ Main project folder: MISSING"
+fi
+
+# Final Status
+echo ""
+echo "🎯 VALIDATION SUMMARY:"
+if systemctl is-active --quiet docker && \
+   systemctl is-active --quiet postgresql && \
+   systemctl is-active --quiet redis-server && \
+   ufw status | grep -q "active"; then
+    echo "   🎉 IONOS VPS SETUP: SUCCESSFUL!"
+    echo "   Status: READY FOR VIETFOREX DEVELOPMENT"
+else
+    echo "   ⚠️  IONOS VPS SETUP: NEEDS ATTENTION"
+    echo "   Status: CHECK FAILED SERVICES"
+fi
+
+echo ""
+echo "📞 Support: https://www.ionos.com/help"
+echo "💬 Next: Continue with VietForex Bot API development!"
+EOF
+
+chmod +x ~/vietforex-bot-project/san-xuat/kiem-chung/ionos-validation.sh
+
+# Run validation
+~/vietforex-bot-project/san-xuat/kiem-chung/ionos-validation.sh
+```
+
+**Performance Baseline:**
+```bash
+# Performance testing script
+cat > ~/vietforex-bot-project/san-xuat/kiem-chung/performance-baseline.sh << 'EOF'
+#!/bin/bash
+# IONOS Performance Baseline Test
+
+echo "📊 IONOS VPS PERFORMANCE BASELINE"
+echo "================================="
+echo "Server: $(curl -s ifconfig.me) (Frankfurt)"
+echo "Date: $(date)"
+echo ""
+
+# CPU Performance
+echo "⚡ CPU PERFORMANCE:"
+echo "   Cores: $(nproc)"
+echo "   Model: $(cat /proc/cpuinfo | grep 'model name' | head -1 | cut -d':' -f2 | xargs)"
+echo "   Load: $(cat /proc/loadavg)"
+
+# Memory Performance  
+echo ""
+echo "💾 MEMORY PERFORMANCE:"
+free -h
+
+# Disk I/O Test
+echo ""
+echo "💽 DISK I/O TEST:"
+dd if=/dev/zero of=~/test_file bs=1M count=100 2>&1 | grep -i copied
+rm -f ~/test_file
+
+# Network Test
+echo ""
+echo "🌐 NETWORK TEST:"
+echo "   Frankfurt → Global DNS:"
+ping -c 4 8.8.8.8 | tail -1
+
+echo ""
+echo "📈 IONOS Baseline: ESTABLISHED"
+EOF
+
+chmod +x ~/vietforex-bot-project/san-xuat/kiem-chung/performance-baseline.sh
+
+# Run performance test
+~/vietforex-bot-project/san-xuat/kiem-chung/performance-baseline.sh
+```
+
+---
+
+### 🎯 IONOS VPS SETUP COMPLETION CHECKLIST
+
+#### ✅ **Infrastructure Foundation:**
+- [ ] IONOS VPS €4/month active in Frankfurt
+- [ ] Ubuntu 22.04 LTS fully updated
+- [ ] SSH key authentication configured
+- [ ] User `forex-bot` created with sudo privileges
+- [ ] Root login disabled for security
+
+#### ✅ **Security Hardening:**
+- [ ] SSH port changed to 2222
+- [ ] UFW firewall active with proper rules
+- [ ] Fail2Ban protection enabled
+- [ ] SSL-ready for HTTPS traffic
+- [ ] Security audit completed
+
+#### ✅ **Software Stack:**
+- [ ] Docker & Docker Compose operational
+- [ ] Node.js v20+ with PM2 installed
+- [ ] PostgreSQL database configured
+- [ ] Redis cache service running
+- [ ] All services auto-start on boot
+
+#### ✅ **Project Infrastructure:**
+- [ ] VietForex project structure created
+- [ ] Environment configurations saved
+- [ ] Backup system automated
+- [ ] Monitoring scripts deployed
+- [ ] Validation framework working
+
+#### ✅ **Performance & Reliability:**
+- [ ] System performance baseline established
+- [ ] All services responding correctly
+- [ ] Network connectivity validated
+- [ ] Automated monitoring active
+- [ ] Daily backup cron configured
+
+---
+
+### 💰 **IONOS Cost Structure:**
+
+**Monthly Operating Costs:**
+- **VPS S Frankfurt**: €4/month (~100k VND)
+- **Backup Storage**: €0 (included)
+- **DDoS Protection**: €0 (free)
+- **24/7 Support**: €0 (included)
+
+**Total IONOS Cost**: €4/month (~100k VND)
+
+**ROI Benefits:**
+- ✅ **50% cheaper** than DigitalOcean
+- ✅ **60% cheaper** than AWS/GCP
+- ✅ **EU compliance** ready
+- ✅ **Enterprise uptime** SLA
+- ✅ **German engineering** reliability
+
+---
+
+### 🚀 **Next Steps Integration:**
+
+**Sau khi hoàn thành GIAI ĐOẠN 0.5, tiến tục với:**
+
+1. **GIAI ĐOẠN -1**: Nghiên cứu và khung xác thực
+2. **GIAI ĐOẠN 0**: Foundation Setup (đã có VPS ready)
+3. **GIAI ĐOẠN 1**: Data pipeline trên VPS đã setup
+
+**VPS IONOS sẽ là foundation vững chắc cho toàn bộ VietForex Bot ecosystem!**
+
+---
+
+**📍 IMPORTANT NOTE**: Thêm section này vào PROJECT-PLAN.md sẽ tạo ra một infrastructure foundation hoàn chỉnh và professional cho dự án VietForex Bot, đảm bảo tính khả thi và reliability cho toàn bộ hệ thống.
 ---
 
 ## 🔬 GIAI ĐOẠN -1: NGHIÊN CỨU VÀ KHUNG XÁC THỰC (TUẦN MỚI THÊM)
