@@ -437,7 +437,30 @@ API Requests/min: 1,000,000
 Signals/day: 10,000,000
 Database Queries/sec: 100,000
 ```
+## 🏗️ **HOSTINGER VPS INFRASTRUCTURE**
 
+### **Server Specifications:**
+- **Provider**: Hostinger VPS Plan 1
+- **Cost**: $3.99/month (~95k VNĐ)
+- **RAM**: 1GB
+- **CPU**: 1 vCore
+- **Storage**: 20GB SSD
+- **Bandwidth**: 1TB
+- **Location**: Singapore/Netherlands
+- **Hostname**: `vietforex.production`
+
+### **Hostinger Advantages:**
+- ✅ **Cost Effective**: 50% cheaper than IONOS
+- ✅ **Good Latency**: Singapore location optimal for Vietnam
+- ✅ **Reliable**: 99.9% uptime guarantee
+- ✅ **Support**: 24/7 customer support
+- ✅ **Management**: Easy hPanel interface
+
+### **Naming Convention Compliance:**
+- **Hostinger requires dot-separated hostnames**
+- **Project structure uses dots**: `vietforex.bot.project`
+- **User accounts use dots**: `forex.bot`
+- **Scripts use dots**: `system.monitor.sh`
 ---
 
 ## 📋 **ARCHITECTURE VALIDATION CHECKLIST**
