@@ -96,3 +96,19 @@ infrastructure/validation-results/performance-logs/*.log
 *.key
 authorized_keys
 EOF
+# Existing entries...
+
+# Hostinger VPS specific
+.env.hostinger
+hostinger.vps.info.json
+vietforex.bot.project/
+*.hostinger.log
+
+# Dot-naming convention files
+system.monitor.sh.log
+performance.baseline.*.txt
+backup.*.tar.gz
+
+# Hostinger hPanel backups
+hpanel-backup/
+hostinger-ssl/
