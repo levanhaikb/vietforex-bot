@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  vietforex-api:
+    build: .
+    container_name: vietforex.production.api
+    hostname: vietforex.production
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - SERVER_HOSTNAME=vietforex.production
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - vietforex.network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: vietforex.production.db
+    hostname: postgres.vietforex.production
+    environment:
+      - POSTGRES_DB=vietforex_production
+      - POSTGRES_USER=forex_bot_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - vietforex.network
+
+  redis:
+    image: redis:7-alpine
+    container_name: vietforex.production.cache
+    hostname: redis.vietforex.production
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    networks:
+      - vietforex.network
+
+networks:
+  vietforex.network:
+    name: vietforex.production.network
