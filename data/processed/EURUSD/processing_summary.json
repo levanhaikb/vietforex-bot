@@ -1,0 +1,266 @@
+{
+  "overall_success": true,
+  "successful_timeframes": 7,
+  "total_timeframes": 7,
+  "total_processing_time_seconds": 15.016735,
+  "total_records_processed": 226070,
+  "processing_stats": {
+    "total_records_processed": 226070,
+    "timeframes_completed": 7,
+    "regime_classifications": {
+      "M1": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:04:52.482253"
+      },
+      "M5": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:04:55.381409"
+      },
+      "M15": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:04:58.318992"
+      },
+      "H1": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:05:02.909877"
+      },
+      "H4": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:05:04.786254"
+      },
+      "D1": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:05:05.375116"
+      },
+      "W1": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 5.374918317343574e-06,
+        "analysis_timestamp": "2025-05-31T05:05:05.498118"
+      }
+    },
+    "data_quality_scores": {
+      "M1": 0.96913375,
+      "M5": 0.96913375,
+      "M15": 0.96913375,
+      "H1": 0.96913375,
+      "H4": 0.9696190068493151,
+      "D1": 0.9745119863013698,
+      "W1": 0.9971754807692308
+    },
+    "processing_time": {
+      "M1": 2.977879,
+      "M5": 2.884978,
+      "M15": 3.610114,
+      "H1": 3.954222,
+      "H4": 1.263998,
+      "D1": 0.231342,
+      "W1": 0.063494
+    },
+    "last_processed": "2025-05-31T05:05:05.531921"
+  },
+  "timeframe_results": {
+    "M1": {
+      "timeframe": "M1",
+      "success": true,
+      "processing_time_seconds": 2.977879,
+      "records_processed": 50000,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:04:52.482253"
+      },
+      "data_quality_score": 0.96913375,
+      "ml_training_ready": 642,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_M1_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_M1_metadata.json",
+        "file_size_mb": 8.056632995605469,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "                timestamp     open     high      low    close  volume  \\\n0     2015-01-01 00:00:00  1.10000  1.10006  1.09985  1.10000    9109   \n1     2015-01-01 00:01:00  1.10000  1.10011  1.09999  1.10008    9047   \n2     2015-01-01 00:02:00  1.10008  1.10027  1.09991  1.10003    4443   \n3     2015-01-01 00:03:00  1.10003  1.10091  1.09983  1.10077    3289   \n4     2015-01-01 00:04:00  1.10077  1.10211  1.10063  1.10197    2703   \n...                   ...      ...      ...      ...      ...     ...   \n49995 2015-02-04 17:15:00  1.10113  1.10129  1.10106  1.10113    2741   \n49996 2015-02-04 17:16:00  1.10113  1.10126  1.10104  1.10113    6344   \n49997 2015-02-04 17:17:00  1.10113  1.10123  1.10097  1.10113    5188   \n49998 2015-02-04 17:18:00  1.10113  1.10124  1.10092  1.10113    2911   \n49999 2015-02-04 17:19:00  1.10113  1.10129  1.10092  1.10113    7007   \n\n        returns   sma_20  \n0           NaN      NaN  \n1      0.000073      NaN  \n2     -0.000045      NaN  \n3      0.000673      NaN  \n4      0.001090      NaN  \n...         ...      ...  \n49995  0.000000  1.10113  \n49996  0.000000  1.10113  \n49997  0.000000  1.10113  \n49998  0.000000  1.10113  \n49999  0.000000  1.10113  \n\n[50000 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "M1"
+      }
+    },
+    "M5": {
+      "timeframe": "M5",
+      "success": true,
+      "processing_time_seconds": 2.884978,
+      "records_processed": 50000,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:04:55.381409"
+      },
+      "data_quality_score": 0.96913375,
+      "ml_training_ready": 642,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_M5_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_M5_metadata.json",
+        "file_size_mb": 8.056632995605469,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "                timestamp     open     high      low    close  volume  \\\n0     2015-01-01 00:00:00  1.10000  1.10006  1.09985  1.10000    9109   \n1     2015-01-01 00:05:00  1.10000  1.10011  1.09999  1.10008    9047   \n2     2015-01-01 00:10:00  1.10008  1.10027  1.09991  1.10003    4443   \n3     2015-01-01 00:15:00  1.10003  1.10091  1.09983  1.10077    3289   \n4     2015-01-01 00:20:00  1.10077  1.10211  1.10063  1.10197    2703   \n...                   ...      ...      ...      ...      ...     ...   \n49995 2015-06-23 14:15:00  1.10113  1.10129  1.10106  1.10113    2741   \n49996 2015-06-23 14:20:00  1.10113  1.10126  1.10104  1.10113    6344   \n49997 2015-06-23 14:25:00  1.10113  1.10123  1.10097  1.10113    5188   \n49998 2015-06-23 14:30:00  1.10113  1.10124  1.10092  1.10113    2911   \n49999 2015-06-23 14:35:00  1.10113  1.10129  1.10092  1.10113    7007   \n\n        returns   sma_20  \n0           NaN      NaN  \n1      0.000073      NaN  \n2     -0.000045      NaN  \n3      0.000673      NaN  \n4      0.001090      NaN  \n...         ...      ...  \n49995  0.000000  1.10113  \n49996  0.000000  1.10113  \n49997  0.000000  1.10113  \n49998  0.000000  1.10113  \n49999  0.000000  1.10113  \n\n[50000 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "M5"
+      }
+    },
+    "M15": {
+      "timeframe": "M15",
+      "success": true,
+      "processing_time_seconds": 3.610114,
+      "records_processed": 50000,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:04:58.318992"
+      },
+      "data_quality_score": 0.96913375,
+      "ml_training_ready": 642,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_M15_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_M15_metadata.json",
+        "file_size_mb": 8.056632995605469,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "                timestamp     open     high      low    close  volume  \\\n0     2015-01-01 00:00:00  1.10000  1.10006  1.09985  1.10000    9109   \n1     2015-01-01 00:15:00  1.10000  1.10011  1.09999  1.10008    9047   \n2     2015-01-01 00:30:00  1.10008  1.10027  1.09991  1.10003    4443   \n3     2015-01-01 00:45:00  1.10003  1.10091  1.09983  1.10077    3289   \n4     2015-01-01 01:00:00  1.10077  1.10211  1.10063  1.10197    2703   \n...                   ...      ...      ...      ...      ...     ...   \n49995 2016-06-04 18:45:00  1.10113  1.10129  1.10106  1.10113    2741   \n49996 2016-06-04 19:00:00  1.10113  1.10126  1.10104  1.10113    6344   \n49997 2016-06-04 19:15:00  1.10113  1.10123  1.10097  1.10113    5188   \n49998 2016-06-04 19:30:00  1.10113  1.10124  1.10092  1.10113    2911   \n49999 2016-06-04 19:45:00  1.10113  1.10129  1.10092  1.10113    7007   \n\n        returns   sma_20  \n0           NaN      NaN  \n1      0.000073      NaN  \n2     -0.000045      NaN  \n3      0.000673      NaN  \n4      0.001090      NaN  \n...         ...      ...  \n49995  0.000000  1.10113  \n49996  0.000000  1.10113  \n49997  0.000000  1.10113  \n49998  0.000000  1.10113  \n49999  0.000000  1.10113  \n\n[50000 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "M15"
+      }
+    },
+    "H1": {
+      "timeframe": "H1",
+      "success": true,
+      "processing_time_seconds": 3.954222,
+      "records_processed": 50000,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:05:02.909877"
+      },
+      "data_quality_score": 0.96913375,
+      "ml_training_ready": 642,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_H1_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_H1_metadata.json",
+        "file_size_mb": 8.056632995605469,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "                timestamp     open     high      low    close  volume  \\\n0     2015-01-01 00:00:00  1.10000  1.10006  1.09985  1.10000    9109   \n1     2015-01-01 01:00:00  1.10000  1.10011  1.09999  1.10008    9047   \n2     2015-01-01 02:00:00  1.10008  1.10027  1.09991  1.10003    4443   \n3     2015-01-01 03:00:00  1.10003  1.10091  1.09983  1.10077    3289   \n4     2015-01-01 04:00:00  1.10077  1.10211  1.10063  1.10197    2703   \n...                   ...      ...      ...      ...      ...     ...   \n49995 2020-09-14 03:00:00  1.10113  1.10129  1.10106  1.10113    2741   \n49996 2020-09-14 04:00:00  1.10113  1.10126  1.10104  1.10113    6344   \n49997 2020-09-14 05:00:00  1.10113  1.10123  1.10097  1.10113    5188   \n49998 2020-09-14 06:00:00  1.10113  1.10124  1.10092  1.10113    2911   \n49999 2020-09-14 07:00:00  1.10113  1.10129  1.10092  1.10113    7007   \n\n        returns   sma_20  \n0           NaN      NaN  \n1      0.000073      NaN  \n2     -0.000045      NaN  \n3      0.000673      NaN  \n4      0.001090      NaN  \n...         ...      ...  \n49995  0.000000  1.10113  \n49996  0.000000  1.10113  \n49997  0.000000  1.10113  \n49998  0.000000  1.10113  \n49999  0.000000  1.10113  \n\n[50000 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "H1"
+      }
+    },
+    "H4": {
+      "timeframe": "H4",
+      "success": true,
+      "processing_time_seconds": 1.263998,
+      "records_processed": 21900,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:05:04.786254"
+      },
+      "data_quality_score": 0.9696190068493151,
+      "ml_training_ready": 637,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_H4_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_H4_metadata.json",
+        "file_size_mb": 3.5650501251220703,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "                timestamp     open     high      low    close  volume  \\\n0     2015-01-01 00:00:00  1.10000  1.10015  1.09983  1.10000    6271   \n1     2015-01-01 04:00:00  1.10000  1.10028  1.09988  1.10021    1096   \n2     2015-01-01 08:00:00  1.10021  1.10054  1.10021  1.10043    7462   \n3     2015-01-01 12:00:00  1.10043  1.10189  1.10035  1.10170    3130   \n4     2015-01-01 16:00:00  1.10170  1.10186  1.10112  1.10122    6691   \n...                   ...      ...      ...      ...      ...     ...   \n21895 2024-12-28 04:00:00  1.10695  1.10706  1.10674  1.10695    8633   \n21896 2024-12-28 08:00:00  1.10695  1.10709  1.10677  1.10695    2919   \n21897 2024-12-28 12:00:00  1.10695  1.10697  1.10691  1.10695    8176   \n21898 2024-12-28 16:00:00  1.10695  1.10700  1.10695  1.10695    6718   \n21899 2024-12-28 20:00:00  1.10695  1.10697  1.10692  1.10695    5027   \n\n        returns   sma_20  \n0           NaN      NaN  \n1      0.000191      NaN  \n2      0.000200      NaN  \n3      0.001154      NaN  \n4     -0.000436      NaN  \n...         ...      ...  \n21895  0.000000  1.10695  \n21896  0.000000  1.10695  \n21897  0.000000  1.10695  \n21898  0.000000  1.10695  \n21899  0.000000  1.10695  \n\n[21900 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "H4"
+      }
+    },
+    "D1": {
+      "timeframe": "D1",
+      "success": true,
+      "processing_time_seconds": 0.231342,
+      "records_processed": 3650,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 0.0,
+        "analysis_timestamp": "2025-05-31T05:05:05.375116"
+      },
+      "data_quality_score": 0.9745119863013698,
+      "ml_training_ready": 701,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_D1_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_D1_metadata.json",
+        "file_size_mb": 0.5870599746704102,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "      timestamp     open     high      low    close  volume   returns   sma_20\n0    2015-01-01  1.10000  1.10005  1.09996  1.10000    8896       NaN      NaN\n1    2015-01-02  1.10000  1.10041  1.09994  1.10035    2756  0.000318      NaN\n2    2015-01-03  1.10035  1.10092  1.10020  1.10081    8630  0.000418      NaN\n3    2015-01-04  1.10081  1.10121  1.10064  1.10117    9914  0.000327      NaN\n4    2015-01-05  1.10117  1.10124  1.10046  1.10052    8487 -0.000590      NaN\n...         ...      ...      ...      ...      ...     ...       ...      ...\n3645 2024-12-24  1.10083  1.10102  1.10077  1.10083    9554  0.000000  1.10083\n3646 2024-12-25  1.10083  1.10103  1.10082  1.10083    5926  0.000000  1.10083\n3647 2024-12-26  1.10083  1.10084  1.10068  1.10083    7157  0.000000  1.10083\n3648 2024-12-27  1.10083  1.10086  1.10067  1.10083    2419  0.000000  1.10083\n3649 2024-12-28  1.10083  1.10086  1.10072  1.10083    5002  0.000000  1.10083\n\n[3650 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "D1"
+      }
+    },
+    "W1": {
+      "timeframe": "W1",
+      "success": true,
+      "processing_time_seconds": 0.063494,
+      "records_processed": 520,
+      "features_engineered": 16,
+      "regime_analysis": {
+        "regime": "sideways",
+        "confidence": 0.7,
+        "volatility": 5.374918317343574e-06,
+        "analysis_timestamp": "2025-05-31T05:05:05.498118"
+      },
+      "data_quality_score": 0.9971754807692308,
+      "ml_training_ready": 501,
+      "save_status": {
+        "csv_file": "data/processed/EURUSD/EURUSD_W1_processed.csv",
+        "metadata_file": "data/processed/EURUSD/EURUSD_W1_metadata.json",
+        "file_size_mb": 0.1069326400756836,
+        "success": true
+      },
+      "pipeline_details": {
+        "success": true,
+        "processed_data": "     timestamp     open     high      low    close  volume   returns    sma_20\n0   2015-01-01  1.10000  1.10010  1.09984  1.10000    6631       NaN       NaN\n1   2015-01-08  1.10000  1.10013  1.09844  1.09857    2394 -0.001300       NaN\n2   2015-01-15  1.09857  1.09911  1.09849  1.09905    4714  0.000437       NaN\n3   2015-01-22  1.09905  1.09919  1.09834  1.09848    3958 -0.000519       NaN\n4   2015-01-29  1.09848  1.09901  1.09830  1.09896    7895  0.000437       NaN\n..         ...      ...      ...      ...      ...     ...       ...       ...\n515 2024-11-14  1.09328  1.09336  1.09308  1.09328    7297  0.000000  1.093277\n516 2024-11-21  1.09328  1.09348  1.09319  1.09328    3179  0.000000  1.093277\n517 2024-11-28  1.09328  1.09346  1.09309  1.09328    4180  0.000000  1.093278\n518 2024-12-05  1.09328  1.09341  1.09324  1.09328    1614  0.000000  1.093278\n519 2024-12-12  1.09328  1.09328  1.09314  1.09328    5570  0.000000  1.093279\n\n[520 rows x 8 columns]",
+        "pair": "EURUSD",
+        "timeframe": "W1"
+      }
+    }
+  },
+  "completion_timestamp": "2025-05-31T05:05:05.532133"
+}

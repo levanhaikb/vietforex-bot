@@ -1,0 +1,23 @@
+{
+  "production_ready_model": {
+    "timeframe": "M15",
+    "accuracy": 0.49,
+    "precision": 0.496,
+    "recall": 0.379,
+    "f1_score": 0.43,
+    "method": "percentile_based",
+    "features": [
+      "volatility_10",
+      "price_ma_ratio_20",
+      "volatility_5",
+      "rsi",
+      "momentum_10"
+    ]
+  },
+  "day11_completion": {
+    "timestamp": "2025-05-31T06:01:38.015616",
+    "status": "SUCCESS",
+    "ready_for_day12": true,
+    "notes": "M15 model ready for signal generation"
+  }
+}

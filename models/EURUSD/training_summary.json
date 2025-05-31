@@ -1,0 +1,368 @@
+{
+  "training_completed": true,
+  "total_training_time_seconds": 131.559634,
+  "timeframes_trained": 3,
+  "total_models_trained": 12,
+  "best_models_summary": {
+    "M15": {
+      "model": "RandomForest",
+      "accuracy": 1.0
+    },
+    "H1": {
+      "model": "RandomForest",
+      "accuracy": 1.0
+    },
+    "H4": {
+      "model": "RandomForest",
+      "accuracy": 1.0
+    }
+  },
+  "timeframe_results": {
+    "M15": {
+      "timeframe": "M15",
+      "models_trained": 4,
+      "best_model": "RandomForest",
+      "best_accuracy": 1.0,
+      "all_results": {
+        "RandomForest": {
+          "model_type": "RandomForest",
+          "model": "RandomForestClassifier(max_depth=10, min_samples_split=20, n_jobs=-1,\n                       random_state=42)",
+          "scaler": null,
+          "train_accuracy": 1.0,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[0. 0. 0. ... 0. 0. 0.]",
+          "test_probabilities": "[0. 0. 0. ... 0. 0. 0.]",
+          "training_time": "2025-05-31T05:44:22.481729"
+        },
+        "GradientBoosting": {
+          "model_type": "GradientBoosting",
+          "model": "GradientBoostingClassifier(max_depth=6, random_state=42)",
+          "scaler": null,
+          "train_accuracy": 1.0,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[2.86567647e-07 2.86567647e-07 2.86567647e-07 ... 2.86567647e-07\n 2.86567647e-07 2.86567647e-07]",
+          "test_probabilities": "[2.86567647e-07 2.86567647e-07 2.86567647e-07 ... 2.86567647e-07\n 2.86567647e-07 2.86567647e-07]",
+          "training_time": "2025-05-31T05:44:24.001280"
+        },
+        "Logistic": {
+          "model_type": "Logistic",
+          "model": "LogisticRegression(max_iter=1000, random_state=42)",
+          "scaler": "StandardScaler()",
+          "train_accuracy": 0.9983429044884432,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[0.00131919 0.00121078 0.00123687 ... 0.00131407 0.00153387 0.00127255]",
+          "test_probabilities": "[0.00119644 0.00117168 0.00125876 ... 0.00121813 0.00112168 0.0011464 ]",
+          "training_time": "2025-05-31T05:44:24.101647"
+        },
+        "LSTM": {
+          "model_type": "LSTM",
+          "model": "<Sequential name=sequential, built=True>",
+          "scaler": "StandardScaler()",
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[6.2756982e-07 1.4502069e-07 6.8274886e-07 ... 4.3553203e-07 6.5497107e-07\n 4.6500429e-07]",
+          "test_probabilities": "[7.8026382e-08 5.8234843e-07 6.0095675e-07 ... 5.5149673e-07 2.4401589e-07\n 2.0061522e-07]",
+          "training_history": {
+            "accuracy": [
+              0.9958001375198364,
+              0.9981143474578857,
+              0.9994285702705383,
+              0.9997714161872864,
+              0.999828577041626,
+              0.999914288520813,
+              0.9998857378959656,
+              0.9998857378959656,
+              0.9998857378959656,
+              0.9998571276664734
+            ],
+            "loss": [
+              0.06215951591730118,
+              0.006915613077580929,
+              0.001575426897034049,
+              0.0007145566050894558,
+              0.0006407390465028584,
+              0.00024467954062856734,
+              0.00030956906266510487,
+              0.00033870982588268816,
+              0.00040622090455144644,
+              0.0002647040819283575
+            ],
+            "val_accuracy": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "val_loss": [
+              0.0015954122645780444,
+              0.0006582476780749857,
+              8.5747022239957e-05,
+              1.883950608316809e-05,
+              1.1044494385714643e-05,
+              5.808593414258212e-06,
+              3.015797801708686e-06,
+              2.0639797639887547e-06,
+              1.1294864634692203e-06,
+              5.907731974730268e-07
+            ]
+          },
+          "training_time": "2025-05-31T05:45:12.905433"
+        }
+      },
+      "model_files": [
+        "models/EURUSD/M15/RandomForest_model.pkl",
+        "models/EURUSD/M15/GradientBoosting_model.pkl",
+        "models/EURUSD/M15/Logistic_model.pkl"
+      ],
+      "training_completed": "2025-05-31T05:45:12.969893"
+    },
+    "H1": {
+      "timeframe": "H1",
+      "models_trained": 4,
+      "best_model": "RandomForest",
+      "best_accuracy": 1.0,
+      "all_results": {
+        "RandomForest": {
+          "model_type": "RandomForest",
+          "model": "RandomForestClassifier(max_depth=10, min_samples_split=20, n_jobs=-1,\n                       random_state=42)",
+          "scaler": null,
+          "train_accuracy": 1.0,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[0. 0. 0. ... 0. 0. 0.]",
+          "test_probabilities": "[0. 0. 0. ... 0. 0. 0.]",
+          "training_time": "2025-05-31T05:45:15.581764"
+        },
+        "GradientBoosting": {
+          "model_type": "GradientBoosting",
+          "model": "GradientBoostingClassifier(max_depth=6, random_state=42)",
+          "scaler": null,
+          "train_accuracy": 1.0,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[2.86567647e-07 2.86567647e-07 2.86567647e-07 ... 2.86567647e-07\n 2.86567647e-07 2.86567647e-07]",
+          "test_probabilities": "[2.86567647e-07 2.86567647e-07 2.86567647e-07 ... 2.86567647e-07\n 2.86567647e-07 2.86567647e-07]",
+          "training_time": "2025-05-31T05:45:17.455585"
+        },
+        "Logistic": {
+          "model_type": "Logistic",
+          "model": "LogisticRegression(max_iter=1000, random_state=42)",
+          "scaler": "StandardScaler()",
+          "train_accuracy": 0.9983429044884432,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[0.00131919 0.00121078 0.00123687 ... 0.00131407 0.00153387 0.00127255]",
+          "test_probabilities": "[0.00119644 0.00117168 0.00125876 ... 0.00121813 0.00112168 0.0011464 ]",
+          "training_time": "2025-05-31T05:45:17.551146"
+        },
+        "LSTM": {
+          "model_type": "LSTM",
+          "model": "<Sequential name=sequential_1, built=True>",
+          "scaler": "StandardScaler()",
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[6.6360730e-07 1.1953856e-07 5.2604696e-07 ... 9.6946629e-08 1.2969751e-07\n 8.2956052e-07]",
+          "test_probabilities": "[5.4721024e-08 4.7608276e-07 2.5272934e-07 ... 5.6644598e-07 2.4304811e-07\n 5.7056377e-07]",
+          "training_history": {
+            "accuracy": [
+              0.9953144192695618,
+              0.9980857968330383,
+              0.9992571473121643,
+              0.9998000264167786,
+              0.9998571276664734,
+              0.999828577041626,
+              0.9998571276664734,
+              0.9999428391456604,
+              0.9998571276664734,
+              0.999914288520813
+            ],
+            "loss": [
+              0.06715408712625504,
+              0.007473090663552284,
+              0.002020529005676508,
+              0.0007827265071682632,
+              0.00034907704684883356,
+              0.00039029138861224055,
+              0.00041102655814029276,
+              0.00019851073739118874,
+              0.00015154846187215298,
+              0.00018057377019431442
+            ],
+            "val_accuracy": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "val_loss": [
+              0.0015303961699828506,
+              0.00032357702730223536,
+              0.00012839949340559542,
+              3.217360790586099e-05,
+              9.139452231465839e-06,
+              2.9010200250922935e-06,
+              2.9053128400846617e-06,
+              1.0876474334509112e-06,
+              6.625941182392125e-07,
+              3.83923861591029e-07
+            ]
+          },
+          "training_time": "2025-05-31T05:46:02.539994"
+        }
+      },
+      "model_files": [
+        "models/EURUSD/H1/RandomForest_model.pkl",
+        "models/EURUSD/H1/GradientBoosting_model.pkl",
+        "models/EURUSD/H1/Logistic_model.pkl"
+      ],
+      "training_completed": "2025-05-31T05:46:02.574884"
+    },
+    "H4": {
+      "timeframe": "H4",
+      "models_trained": 4,
+      "best_model": "RandomForest",
+      "best_accuracy": 1.0,
+      "all_results": {
+        "RandomForest": {
+          "model_type": "RandomForest",
+          "model": "RandomForestClassifier(max_depth=10, min_samples_split=20, n_jobs=-1,\n                       random_state=42)",
+          "scaler": null,
+          "train_accuracy": 1.0,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[0. 0. 0. ... 0. 0. 0.]",
+          "test_probabilities": "[0. 0. 0. ... 0. 0. 0.]",
+          "training_time": "2025-05-31T05:46:03.549438"
+        },
+        "GradientBoosting": {
+          "model_type": "GradientBoosting",
+          "model": "GradientBoostingClassifier(max_depth=6, random_state=42)",
+          "scaler": null,
+          "train_accuracy": 1.0,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[5.68208404e-07 5.68208404e-07 5.68208404e-07 ... 5.68208404e-07\n 5.68208404e-07 5.68208404e-07]",
+          "test_probabilities": "[5.68208404e-07 5.68208404e-07 5.68208404e-07 ... 5.68208404e-07\n 5.68208404e-07 5.68208404e-07]",
+          "training_time": "2025-05-31T05:46:04.346437"
+        },
+        "Logistic": {
+          "model_type": "Logistic",
+          "model": "LogisticRegression(max_iter=1000, random_state=42)",
+          "scaler": "StandardScaler()",
+          "train_accuracy": 0.99706477072598,
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[0.0035114  0.00366462 0.00099715 ... 0.0025411  0.00136205 0.00105285]",
+          "test_probabilities": "[0.00191472 0.00278645 0.00304618 ... 0.00103233 0.00122076 0.00144187]",
+          "training_time": "2025-05-31T05:46:04.386398"
+        },
+        "LSTM": {
+          "model_type": "LSTM",
+          "model": "<Sequential name=sequential_2, built=True>",
+          "scaler": "StandardScaler()",
+          "val_accuracy": 1.0,
+          "test_accuracy": 1.0,
+          "val_predictions": "[0 0 0 ... 0 0 0]",
+          "test_predictions": "[0 0 0 ... 0 0 0]",
+          "val_probabilities": "[1.45559525e-05 1.68662682e-05 2.68421136e-05 ... 1.93085125e-05\n 2.70099918e-05 1.60768432e-05]",
+          "test_probabilities": "[3.1727854e-05 2.3052871e-05 1.5773685e-05 ... 2.1297330e-05 1.8741324e-05\n 2.1533560e-05]",
+          "training_history": {
+            "accuracy": [
+              0.985519528388977,
+              0.9964777231216431,
+              0.9974561333656311,
+              0.9983693361282349,
+              0.9984345436096191,
+              0.999021589756012,
+              0.9993477463722229,
+              0.9996086359024048,
+              1.0,
+              1.0
+            ],
+            "loss": [
+              0.13582544028759003,
+              0.014103035442531109,
+              0.01067382376641035,
+              0.007114987354725599,
+              0.004658886231482029,
+              0.0028785085305571556,
+              0.0024330955930054188,
+              0.0013081623474135995,
+              0.00039105472387745976,
+              0.00018646100943442434
+            ],
+            "val_accuracy": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "val_loss": [
+              0.002189655089750886,
+              0.0009426911710761487,
+              0.0011640371521934867,
+              0.0006291507161222398,
+              0.0003174743033014238,
+              0.00020777502504643053,
+              0.00012764208076987416,
+              0.00013094363384880126,
+              4.426187661010772e-05,
+              2.5532553991070017e-05
+            ]
+          },
+          "training_time": "2025-05-31T05:46:31.646414"
+        }
+      },
+      "model_files": [
+        "models/EURUSD/H4/RandomForest_model.pkl",
+        "models/EURUSD/H4/GradientBoosting_model.pkl",
+        "models/EURUSD/H4/Logistic_model.pkl"
+      ],
+      "training_completed": "2025-05-31T05:46:31.679438"
+    }
+  },
+  "completion_timestamp": "2025-05-31T05:46:31.679617"
+}

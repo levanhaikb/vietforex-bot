@@ -1,0 +1,11 @@
+{
+  "update_time": "2025-05-31T08:11:01.519206",
+  "project_path": "/content/drive/MyDrive/vietforex-bot",
+  "api_server": "http://145.79.13.123:3000",
+  "api_status": "✅ Hoạt động tốt",
+  "commands": {
+    "morning": "exec(open('src/colab/daily_setup.py').read())",
+    "check": "exec(open('src/colab/test_and_validate.py').read())",
+    "evening": "exec(open('src/colab/end_of_day_sync.py').read())"
+  }
+}

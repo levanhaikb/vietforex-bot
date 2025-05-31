@@ -1,0 +1,12 @@
+{
+  "pair": "EURUSD",
+  "timeframe": "M1",
+  "records": 50000,
+  "features": 16,
+  "date_range": {
+    "start": "2015-01-01T00:00:00",
+    "end": "2015-02-04T17:19:00"
+  },
+  "processed_at": "2025-05-31T05:04:53.501320",
+  "file_size_mb": 8.056632995605469
+}

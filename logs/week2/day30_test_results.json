@@ -1,0 +1,22 @@
+{
+  "ngay": "30",
+  "thoi_gian_test": "2025-05-30T02:38:14.375001",
+  "tests": {
+    "model_trainer_file": {
+      "passed": false,
+      "error": "model_trainer.py not found - cần tạo file này"
+    },
+    "tensorflow": {
+      "passed": true,
+      "version": "2.18.0"
+    },
+    "sklearn": {
+      "passed": true,
+      "version": "1.6.1"
+    },
+    "training_data": {
+      "passed": false,
+      "error": "Training data not found - chạy Day 10 trước"
+    }
+  }
+}

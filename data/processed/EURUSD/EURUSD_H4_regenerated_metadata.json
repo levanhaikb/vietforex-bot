@@ -1,0 +1,11 @@
+{
+  "timeframe": "H4",
+  "regenerated_at": "2025-05-31T05:52:02.884633",
+  "records": 2190,
+  "features": 18,
+  "date_range": {
+    "start": "2015-01-01T00:00:00",
+    "end": "2015-12-31T20:00:00"
+  },
+  "file_size_mb": 0.5767507553100586
+}
