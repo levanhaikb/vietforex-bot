@@ -1,6 +1,6 @@
 # VietForex Bot - Trạng thái Dự án
 
-## 📅 Cập nhật: 31/05/2025 08:43
+## 📅 Cập nhật: 01/06/2025 13:53
 
 ## 🏠 Thông tin cơ bản:
 - **Thư mục**: `/content/drive/MyDrive/vietforex-bot`
