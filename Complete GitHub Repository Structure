@@ -1,0 +1,286 @@
+# 📁 VietForex Bot - Complete GitHub Repository Structure
+
+## 🎯 Repository Layout cho GitHub
+
+```
+vietforex-bot/
+├── README.md                           # Main project overview
+├── ARCHITECTURE.md                     # Complete architecture docs
+├── PROGRESS.md                         # Development progress tracker
+├── PROJECT-PLAN.md                     # 20-week development plan
+├── .gitignore                          # Git ignore rules
+├── LICENSE                             # Project license
+│
+├── docs/                               # 📚 Documentation
+│   ├── API.md                         # API endpoint documentation
+│   ├── DISCORD_BOT.md                 # Discord bot setup guide
+│   ├── VPS_SETUP.md                   # VPS configuration guide
+│   ├── AI_ML_MODELS.md                # ML model documentation
+│   ├── DEPLOYMENT.md                  # Deployment instructions
+│   ├── TROUBLESHOOTING.md             # Common issues & solutions
+│   └── CURRENT_ISSUE.md               # Active development issues
+│
+├── src/                                # 💻 Source Code
+│   ├── api-server/                    # 🖥️ VPS API Server
+│   │   ├── index.js                   # Main API server
+│   │   ├── package.json               # Dependencies
+│   │   ├── routes/                    # API routes
+│   │   │   ├── health.js              # Health check endpoints
+│   │   │   ├── signals.js             # Signal generation
+│   │   │   ├── models.js              # ML model management
+│   │   │   ├── discord.js             # Discord integration
+│   │   │   └── analytics.js           # Performance analytics
+│   │   ├── middleware/                # Express middleware
+│   │   │   ├── auth.js                # Authentication
+│   │   │   ├── rateLimit.js           # Rate limiting
+│   │   │   └── validation.js          # Input validation
+│   │   ├── utils/                     # Utility functions
+│   │   │   ├── database.js            # Database helpers
+│   │   │   ├── redis.js               # Redis operations
+│   │   │   └── logger.js              # Logging system
+│   │   └── config/                    # Server configuration
+│   │       ├── database.js            # DB config
+│   │       ├── redis.js               # Redis config
+│   │       └── server.js              # Server settings
+│   │
+│   ├── discord-bot/                   # 🎮 Discord Bot
+│   │   ├── index.js                   # Main bot file
+│   │   ├── config.js                  # Bot configuration
+│   │   ├── package.json               # Bot dependencies
+│   │   ├── commands/                  # Slash commands
+│   │   │   ├── ping.js                # Test command
+│   │   │   ├── signals.js             # Signal commands
+│   │   │   ├── info.js                # Bot information
+│   │   │   └── admin.js               # Admin commands
+│   │   ├── utils/                     # Bot utilities
+│   │   │   ├── embedBuilder.js        # Message formatting
+│   │   │   ├── signalFormatter.js     # Signal templates
+│   │   │   └── userManager.js         # User management
+│   │   └── handlers/                  # Event handlers
+│   │       ├── interactionCreate.js   # Command handling
+│   │       ├── ready.js               # Bot ready event
+│   │       └── webhooks.js            # Webhook handling
+│   │
+│   ├── colab/                         # 🧠 AI/ML System (Google Colab)
+│   │   ├── daily_setup.py             # Daily initialization
+│   │   ├── test_and_validate.py       # System validation
+│   │   ├── end_of_day_sync.py         # Daily sync
+│   │   │
+│   │   ├── api/                       # API Integration
+│   │   │   ├── vietforex_api.py       # Basic API client
+│   │   │   ├── vietforex_api_enhanced.py  # Enhanced client
+│   │   │   └── vietforex_api_client.py    # Advanced client
+│   │   │
+│   │   ├── data/                      # Data Processing
+│   │   │   ├── data_processor.py      # Basic data processing
+│   │   │   ├── universal_data_pipeline.py # Universal pipeline
+│   │   │   ├── eurusd_historical_processor.py # EURUSD processor
+│   │   │   └── anti_leakage_validator.py   # Data validation
+│   │   │
+│   │   ├── models/                    # Machine Learning
+│   │   │   ├── ml_model_trainer.py    # Model training system
+│   │   │   ├── regime_detector.py     # Market regime detection
+│   │   │   └── advanced_feature_engineer.py # Feature engineering
+│   │   │
+│   │   ├── signals/                   # Signal Generation
+│   │   │   ├── signal_generator.py    # Advanced signal system
+│   │   │   └── signal_validator.py    # Signal validation
+│   │   │
+│   │   └── notebooks/                 # Jupyter Notebooks
+│   │       ├── day8_api_testing.ipynb # API testing
+│   │       ├── day10_data_processing.ipynb # Data processing
+│   │       ├── day11_model_training.ipynb  # Model training
+│   │       └── day12_signal_generation.ipynb # Signal generation
+│   │
+│   └── database/                      # 🗄️ Database Scripts
+│       ├── schema.sql                 # Database schema
+│       ├── migrations/                # Database migrations
+│       ├── seeds/                     # Seed data
+│       └── backup/                    # Backup scripts
+│
+├── config/                            # ⚙️ Configuration
+│   ├── .env.example                   # Environment template
+│   ├── config.template.js             # Bot config template
+│   ├── api_endpoints.json             # API configuration
+│   ├── telegram_integration.json      # Telegram settings
+│   ├── bot_commands.json              # Bot commands config
+│   └── day13_preparation.json         # Next phase prep
+│
+├── data/                              # 📊 Data Storage
+│   ├── processed/                     # Processed data
+│   │   └── EURUSD/                    # EURUSD specific data
+│   ├── signals/                       # Signal history
+│   └── models/                        # Trained ML models
+│       └── EURUSD/                    # EURUSD models
+│           ├── M15/                   # M15 timeframe models
+│           ├── H1/                    # H1 timeframe models
+│           └── H4/                    # H4 timeframe models
+│
+├── logs/                              # 📋 Logs & Reports
+│   ├── daily_report_2025-06-01.json  # Daily reports
+│   ├── day12_completion.json          # Completion logs
+│   └── week2/                         # Weekly logs
+│
+├── scripts/                           # 🔧 Automation Scripts
+│   ├── deploy-api.sh                  # API deployment
+│   ├── sync-models.sh                 # Model synchronization
+│   ├── backup.sh                      # Backup procedures
+│   ├── setup_vps.sh                   # VPS setup automation
+│   └── health_check.sh                # System health checks
+│
+├── tests/                             # 🧪 Testing Suite
+│   ├── api/                          # API tests
+│   ├── discord/                      # Discord bot tests
+│   ├── ml/                           # ML model tests
+│   └── integration/                  # Integration tests
+│
+├── deployment/                        # 🚀 Deployment
+│   ├── docker-compose.yml            # Docker configuration
+│   ├── Dockerfile                    # Docker image
+│   ├── nginx.conf                    # Nginx configuration
+│   ├── pm2.ecosystem.js              # PM2 configuration
+│   └── systemd/                      # Systemd services
+│
+├── monitoring/                        # 📊 Monitoring & Analytics
+│   ├── grafana/                      # Grafana dashboards
+│   ├── prometheus/                   # Prometheus config
+│   └── alerts/                       # Alert configurations
+│
+├── security/                          # 🔒 Security
+│   ├── ssl/                          # SSL certificates
+│   ├── auth/                         # Authentication configs
+│   └── firewall/                     # Firewall rules
+│
+└── utilities/                         # 🛠️ Helper Utilities
+    ├── auto_github_sync.py            # GitHub automation
+    ├── ai_file_detector.py            # AI file detection
+    ├── helper_functions.py            # Helper functions
+    ├── backup_with_github.py          # GitHub backup
+    ├── github_push_with_token.py      # GitHub push automation
+    └── project_status_generator.py    # Status generation
+```
+
+## 📋 Key Files Description
+
+### 🎯 Core Documentation:
+- **README.md**: Project overview, quick start guide
+- **ARCHITECTURE.md**: Complete system architecture
+- **PROGRESS.md**: Development milestone tracking
+- **PROJECT-PLAN.md**: 20-week development roadmap
+
+### 💻 Main Source Code:
+- **src/api-server/**: VPS API server (Node.js + Express)
+- **src/discord-bot/**: Discord bot integration (Discord.js)
+- **src/colab/**: AI/ML system (Python + TensorFlow)
+- **src/database/**: Database management scripts
+
+### ⚙️ Configuration:
+- **config/.env.example**: Environment variables template
+- **config/config.template.js**: Bot configuration template
+- **deployment/**: Production deployment configurations
+
+### 📊 Data Management:
+- **data/processed/**: Cleaned and processed market data
+- **data/signals/**: Historical trading signals
+- **data/models/**: Trained ML models storage
+
+### 🔧 Automation:
+- **scripts/**: Deployment and maintenance scripts
+- **utilities/**: Helper tools and automation
+- **monitoring/**: System monitoring and alerts
+
+## 🚀 Repository Setup Commands
+
+### 1. Clone Repository:
+```bash
+git clone https://github.com/levanhaikb/vietforex-bot.git
+cd vietforex-bot
+```
+
+### 2. VPS Setup:
+```bash
+# Copy environment template
+cp config/.env.example .env
+
+# Install API dependencies
+cd src/api-server
+npm install
+
+# Install Discord bot dependencies  
+cd ../discord-bot
+npm install
+```
+
+### 3. Discord Bot Setup:
+```bash
+# Copy configuration template
+cp config/config.template.js src/discord-bot/config.js
+
+# Edit configuration with your bot token
+nano src/discord-bot/config.js
+```
+
+### 4. Google Colab Setup:
+```python
+# Mount Google Drive
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Clone repository to Colab
+!git clone https://github.com/levanhaikb/vietforex-bot.git
+%cd vietforex-bot
+
+# Run daily setup
+exec(open('src/colab/daily_setup.py').read())
+```
+
+### 5. Production Deployment:
+```bash
+# Start all services with PM2
+cd deployment
+pm2 start pm2.ecosystem.js
+
+# Verify all services running
+pm2 status
+```
+
+## 📚 Documentation Structure
+
+### For Developers:
+- **docs/API.md**: Complete API documentation
+- **docs/DISCORD_BOT.md**: Discord bot development guide
+- **docs/AI_ML_MODELS.md**: Machine learning model documentation
+
+### For Deployment:
+- **docs/VPS_SETUP.md**: VPS configuration guide
+- **docs/DEPLOYMENT.md**: Production deployment instructions
+- **docs/TROUBLESHOOTING.md**: Common issues and solutions
+
+### For Users:
+- **README.md**: Quick start and overview
+- **docs/USER_GUIDE.md**: End-user documentation
+- **docs/FAQ.md**: Frequently asked questions
+
+## 🎯 Special Features
+
+### ✅ GitHub Integration:
+- Automated commit và push scripts
+- Progress tracking với JSON files
+- Issue tracking và documentation
+- Version control cho all components
+
+### ✅ Production Ready:
+- Complete CI/CD pipeline
+- Docker containerization
+- PM2 process management
+- Automated monitoring và alerts
+
+### ✅ Scalable Architecture:
+- Microservices design
+- API-first approach
+- Horizontal scaling ready
+- Multi-environment support
+
+---
+
+**This repository structure provides complete visibility into the VietForex Bot architecture, making it easy for developers to understand, maintain, and extend the system.**
