@@ -1,0 +1,48 @@
+// Technical Analysis Routes
+const TechnicalAnalysis = require('./technicalAnalysis');
+const ta = new TechnicalAnalysis();
+
+// Endpoint để tính indicators
+app.post('/api/analysis/indicators', async (req, res) => {
+    try {
+        const { marketData } = req.body;
+        const features = ta.generateSignalFeatures(marketData);
+        
+        res.json({
+            success: true,
+            features: features,
+            timestamp: new Date().toISOString()
+        });
+    } catch (error) {
+        console.error('Analysis error:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Endpoint để trigger full analysis
+app.post('/api/analysis/trigger', async (req, res) => {
+    try {
+        // Get latest market data
+        const collector = new MarketDataCollector();
+        const marketData = await collector.collectAllData();
+        
+        // Send to ML service
+        const mlResponse = await axios.post(
+            'http://localhost:5000/analyze-market',
+            {
+                pair: 'EURUSD',
+                ...marketData['EUR/USD'],
+                current_price: marketData['EUR/USD']['15m'].slice(-1)[0].close
+            }
+        );
+        
+        res.json({
+            success: true,
+            analysis: mlResponse.data
+        });
+        
+    } catch (error) {
+        console.error('Trigger error:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
